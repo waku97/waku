@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+<head>
+  <!-- Metadata -->
+  <meta charset="utf-8" />
+  <meta name="author" content="Khatija's Secure Links" />
+  <meta name="description" content="Password protect links using AES in the browser." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+  <title>Khatija's Locked Links</title>
+
+  <!-- Inline Styles for a Soft Pink/Purple Theme -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff5f7; /* Soft pink background */
+      color: #4a2c6d; /* Deep purple text */
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      text-align: center;
+    }
+    .form {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .red-border {
+      border: 2px solid #e91e63; /* Pink-red border */
+      padding: 15px;
+      border-radius: 8px;
+      background-color: #ffebee; /* Light red/pink background */
+    }
+    input[type="password"] {
+      padding: 10px;
+      border: 2px solid #9c27b0; /* Purple border */
+      border-radius: 5px;
+      width: 80%;
+      margin: 10px 0;
+    }
+    button {
+      background-color: #9c27b0; /* Purple button */
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    button:hover {
+      background-color: #7b1fa2; /* Darker purple on hover */
+    }
+    hr {
+      border: 1px solid #e1bee7; /* Light purple divider */
+      margin: 15px 0;
+    }
+  </style>
+
+  <!-- Scripts -->
+  <script type="text/javascript" src="b64.js"></script>
+  <script type="text/javascript" src="api.js"></script>
+  <script type="text/javascript" src="index.js"> </script>
+</head>
+
+<body onload="main()">
+  <!-- Explanation for those who do not have JavaScript enabled -->
+  <noscript>
+    <div class="red-border">
+      <p>JavaScript is required to unlock Khatija's protected links.</p>
+      <p>Please enable JavaScript to continue.</p>
+      <p><a href="https://github.com/jstrieb/link-lock">Source code available on GitHub</a></p>
+    </div>
+  </noscript>
+
+  <div class="form" style="display: none">
+    <p>Please enter the password to unlock Khatija's protected link.</p>
+    <p id="hint"></p>
+
+    <hr />
+
+    <label for="password">Khatija's Password</label>
+    <input type="password" id="password" autofocus />
+    <button id="unlockbutton">Unlock Link</button>
+  </div>
+
+  <!-- Display errors in a big red box -->
+  <div class="error red-border" style="display: none">
+    <p id="errortext">Incorrect Password</p>
+    <button onclick="main()">Try Again</button>
+  </div>
+</body>
+
+</html>
